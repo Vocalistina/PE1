@@ -1,1 +1,173 @@
+package be.pxl.je.wintersport;
+
+import java.util.ArrayList;
+
+public class Gondelbaan {
+
+    String naam;
+    String land;
+    int hoogteDalstation;
+    int hoogteBergstation;
+    double lengte;
+    double snelheid;
+    int passagiersPerGondel;
+    int aantalGondels;
+    double duur;
+
+    //CONSTRUCTORS
+    public Gondelbaan(String naam, String land, double lengte, double snelheid) {
+        this.naam = naam;
+        this.land = land;
+        this.lengte = lengte;
+        this.snelheid = snelheid;
+    }
+
+    public Gondelbaan(String naam, String land) {
+        this.naam = naam;
+        this.land = land;
+        this.lengte = 2;
+        this.snelheid = 6;
+    }
+
+    //METHODES
+
+    private String naamToString(int hoogteDalstation, int hoogteBergstation) {
+        StringBuilder naamGondel = new StringBuilder();
+        String hoogteVerschil = (String) getHoogteverschil(int hoogteDalstation, int hoogteBergstation)
+        naamGondel.append(naam);
+        naamGondel.append(" [");
+        naamGondel.append(hoogteVerschil);
+        naamGondel.append("]");
+        return naamGondel.toString();
+    }
+
+    private double getDuur(int hoogteDalstation, int hoogteBergstation, double snelheid) {
+        int hoogte = getHoogteverschil(hoogteDalstation, hoogteBergstation);
+        //bereken de minuten
+        duur = hoogte / snelheid / 60;
+        this.duur = duur;
+        return this.duur;
+    }
+
+    private int getVervoerscapaciteit(int hoogteDalstation, int hoogteBergstation, double duur, int passagiersPerGondel, int aantalGondels) {
+        int vervoersCapaciteit = (int) Math.floor((60 * aantalGondels * passagiersPerGondel) / duur);
+        return vervoersCapaciteit;
+    }
+
+
+
+    private void checkLand(String land){
+        if (!land.equals("Frankrijk") || !land.equals("Oostenrijk") || !land.equals("Zwitserland") || !land.equals("Italië")) {
+            land = "Onbekend";
+        }
+        this.land = land;
+    }
+
+    private void checkSnelheid(double snelheid) {
+        if (snelheid < 3) {
+            snelheid = 3;
+        }
+        else if (snelheid > 8) {
+            snelheid = 8;
+        }
+        this.snelheid = snelheid;
+    }
+
+    private String checkNaam(String naam) {
+        StringBuilder nieuweNaam = new StringBuilder();
+        String[] naamSplit = naam.split(" ");
+        String eersteLetter;
+        String restVanNaam;
+        String woord;
+        int j = 0;
+        for (String i:naamSplit){
+            eersteLetter = naamSplit[j].substring(0,1).toUpperCase();
+            restVanNaam = naamSplit[j].substring(1).toLowerCase();
+            j++;
+            woord = eersteLetter + restVanNaam;
+            nieuweNaam.append(woord);
+        }
+        this.naam = nieuweNaam.toString();
+        return this.naam;
+    }
+
+
+    private void setHoogte(int hoogteDalstation, int hoogteBergstation) {
+        int hoogste = hoogteBergstation;
+        int laagste;
+        if (hoogteDalstation > hoogste) {
+            laagste = hoogteBergstation;
+            hoogste = hoogteDalstation;
+        } else {
+            laagste = hoogteDalstation;
+        }
+        hoogteBergstation = hoogste;
+        hoogteDalstation = laagste;
+    }
+
+    private int getHoogteverschil(int hoogteDalstation, int hoogteBergstation) {
+        int verschil = hoogteBergstation - hoogteDalstation;
+        return verschil;
+    }
+
+    // GETTERS + SETTERS
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getLand() {
+        return land;
+    }
+
+    public void setLand(String land) {
+        this.land = land;
+    }
+
+    public double getLengte() {
+        return lengte;
+    }
+
+    public void setLengte(double lengte) {
+        this.lengte = lengte;
+    }
+
+    public double getSnelheid() {
+        return snelheid;
+    }
+
+    public void setSnelheid(double snelheid) {
+        this.snelheid = snelheid;
+    }
+
+    public int getPassagiersPerGondel() {
+        return passagiersPerGondel;
+    }
+
+    public void setPassagiersPerGondel(int passagiersPerGondel) {
+        this.passagiersPerGondel = passagiersPerGondel;
+    }
+
+    public int getAantalGondels() {
+        return aantalGondels;
+    }
+
+    public void setAantalGondels(int aantalGondels) {
+        this.aantalGondels = aantalGondels;
+    }
+
+    public int getHoogteDalstation() {
+        return hoogteDalstation;
+    }
+
+    public int getHoogteBergstation() {
+        return hoogteBergstation;
+    }
+
+
+}
 
