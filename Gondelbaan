@@ -1,39 +1,39 @@
-package be.pxl.je.wintersport;
+package be.pxl.je.wintersportReworked;
 
 import java.util.ArrayList;
 
 public class Gondelbaan {
 
-    String naam;
-    String land;
-    int hoogteDalstation;
-    int hoogteBergstation;
-    double lengte;
-    double snelheid;
-    int passagiersPerGondel;
-    int aantalGondels;
-    double duur;
+    private String naam;
+    private String land;
+    private int hoogteDalstation;
+    private int hoogteBergstation;
+    private double lengte;
+    private double snelheid;
+    private int passagiersPerGondel;
+    private int aantalGondels;
+    private double duur;
 
     //CONSTRUCTORS
     public Gondelbaan(String naam, String land, double lengte, double snelheid) {
-        this.naam = naam;
-        this.land = land;
+        checkNaam(naam);
+        checkLand(land);
         this.lengte = lengte;
-        this.snelheid = snelheid;
+        checkSnelheid(snelheid);
     }
 
     public Gondelbaan(String naam, String land) {
-        this.naam = naam;
-        this.land = land;
+        checkNaam(naam);
+        checkLand(land);
         this.lengte = 2;
         this.snelheid = 6;
     }
 
     //METHODES
 
-    private String naamToString(int hoogteDalstation, int hoogteBergstation) {
+    public String naamToString() {
         StringBuilder naamGondel = new StringBuilder();
-        String hoogteVerschil = (String) getHoogteverschil(int hoogteDalstation, int hoogteBergstation)
+        String hoogteVerschil = Integer.toString(getHoogteverschil());
         naamGondel.append(naam);
         naamGondel.append(" [");
         naamGondel.append(hoogteVerschil);
@@ -41,15 +41,14 @@ public class Gondelbaan {
         return naamGondel.toString();
     }
 
-    private double getDuur(int hoogteDalstation, int hoogteBergstation, double snelheid) {
-        int hoogte = getHoogteverschil(hoogteDalstation, hoogteBergstation);
+    public double getDuur() {
+        double hoogte = getHoogteverschil();
         //bereken de minuten
         duur = hoogte / snelheid / 60;
-        this.duur = duur;
-        return this.duur;
+        return duur;
     }
 
-    private int getVervoerscapaciteit(int hoogteDalstation, int hoogteBergstation, double duur, int passagiersPerGondel, int aantalGondels) {
+    public int getVervoerscapaciteit(int hoogteDalstation, int hoogteBergstation, double duur, int passagiersPerGondel, int aantalGondels) {
         int vervoersCapaciteit = (int) Math.floor((60 * aantalGondels * passagiersPerGondel) / duur);
         return vervoersCapaciteit;
     }
@@ -57,7 +56,7 @@ public class Gondelbaan {
 
 
     private void checkLand(String land){
-        if (!land.equals("Frankrijk") || !land.equals("Oostenrijk") || !land.equals("Zwitserland") || !land.equals("Italië")) {
+        if (!(land.equals("Frankrijk") || land.equals("Oostenrijk") || land.equals("Zwitserland") || land.equals("Italië"))) {
             land = "Onbekend";
         }
         this.land = land;
@@ -73,26 +72,24 @@ public class Gondelbaan {
         this.snelheid = snelheid;
     }
 
-    private String checkNaam(String naam) {
+    private void checkNaam(String naam) {
         StringBuilder nieuweNaam = new StringBuilder();
         String[] naamSplit = naam.split(" ");
         String eersteLetter;
         String restVanNaam;
         String woord;
-        int j = 0;
-        for (String i:naamSplit){
-            eersteLetter = naamSplit[j].substring(0,1).toUpperCase();
-            restVanNaam = naamSplit[j].substring(1).toLowerCase();
-            j++;
+        for (String element:naamSplit){
+            eersteLetter = element.substring(0,1).toUpperCase();
+            restVanNaam = element.substring(1).toLowerCase();
             woord = eersteLetter + restVanNaam;
             nieuweNaam.append(woord);
+            nieuweNaam.append(" ");
         }
-        this.naam = nieuweNaam.toString();
-        return this.naam;
+        this.naam = nieuweNaam.toString().trim();
     }
 
 
-    private void setHoogte(int hoogteDalstation, int hoogteBergstation) {
+    public void setHoogte(int hoogteDalstation, int hoogteBergstation) {
         int hoogste = hoogteBergstation;
         int laagste;
         if (hoogteDalstation > hoogste) {
@@ -101,13 +98,12 @@ public class Gondelbaan {
         } else {
             laagste = hoogteDalstation;
         }
-        hoogteBergstation = hoogste;
-        hoogteDalstation = laagste;
+        this.hoogteBergstation = hoogste;
+        this.hoogteDalstation = laagste;
     }
 
-    private int getHoogteverschil(int hoogteDalstation, int hoogteBergstation) {
-        int verschil = hoogteBergstation - hoogteDalstation;
-        return verschil;
+    public int getHoogteverschil() {
+        return (this.hoogteBergstation - this.hoogteDalstation);
     }
 
     // GETTERS + SETTERS
@@ -121,7 +117,7 @@ public class Gondelbaan {
     }
 
     public String getLand() {
-        return land;
+        return this.land;
     }
 
     public void setLand(String land) {
@@ -170,4 +166,3 @@ public class Gondelbaan {
 
 
 }
-
