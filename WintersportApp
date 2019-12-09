@@ -1,0 +1,8 @@
+package be.pxl.je.wintersport;
+
+import java.util.ArrayList;
+
+public class WintersportApp {
+    ArrayList<Gondelbaan> gondelbanen = new ArrayList<Gondelbaan>();
+
+}
