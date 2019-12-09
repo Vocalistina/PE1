@@ -1,0 +1,77 @@
+1TIW-TAAK 1 (PE) - GONDELBAAN (telt mee voor 10% van de punten)
+De opdracht:
+Implementeer de klasse Gondelbaan en het programma WintersportApp.
+Op blackboard vind je enkele testklassen om enkele methoden van je klasse
+Gondelbaan te testen. Naast je code (in een .zip bestand) lever je ook twee
+screenshots in per email. Een eerste screenshot met de uitvoer van het
+hoofdprogramma en een tweede met de status van de uitgevoerde unit-testen.
+Deadline: donderdag 12/12 om 23:59
+Indien je vragen of problemen hebt, mag je steeds een mail sturen.
+Implementeer de klasse Gondelbaan. Deze klasse maak je in de folder “src” in
+de package be.pxl.je.wintersport.
+Implementeer de klasse Gondelbaan als volgt.
+Ø Een gondelbaan heeft volgende eigenschappen:
+- naam
+- land
+- hoogteDalstation (in meter)
+- hoogteBergstation (in meter)
+- lengte (in kilometer)
+- snelheid (in meter per seconde (m/s))
+- passagiersPerGondel
+- aantalGondels
+Ø Voorzie alle setters en getters.
+Opmerking: Voor hoogteDalstation en hoogteBergstation voorzie je enkel
+getters. Je voorziet de methode setHoogte() met 2 parameters. De hoogste
+waarde gebruik je voor hoogteBergstation, de laagste waarde gebruik je voor
+hoogteDalstation.
+Voorzie een methode getHoogteverschil() die het hoogteverschil tussen
+bergstation en dalstation teruggeeft.
+Ø Voorzie volgende constructoren:
+- Eén constructor met 4 parameters: naam, land, lengte en snelheid.
+- Eén constructor met 2 parameters: naam en land. De waarde voor lengte
+wordt in dit geval 2 km en de waarde voor snelheid 6 m/s.
+- Voorzie GEEN default constructor.
+- Vermijd dubbele code!
+Enkele belangrijke opmerkingen:
+Voor land zijn enkel de volgende waarden geldig: "Frankrijk”, “Oostenrijk”,
+“Zwitserland” en “Italië”. Land wordt “Onbekend” indien een ongeldige
+waarde wordt gegeven.
+Voor snelheid is een waarde tussen 3 m/s en 8 m/s toegelaten (beide
+grenzen inclusief). Indien een gegeven waarde te laag is, wordt de
+minimumwaarde (3 m/s) gebruikt. Indien de waarde te hoog is, wordt de
+maximumwaarde (8 m/s) gebruikt.
+Bij de naam van een gondelbaan wordt ieder woord in de naam (woorden
+worden gescheiden door spaties) getoond met de eerste letter in hoofdletter
+en de rest in kleine letters. Bijv. “AiGUille dU MIDi” wordt “Aiguille Du
+Midi”.
+Ø Voorzie de methode getDuur() die de tijd geeft in minuten om van
+dalstation naar bergstation (of andersom) te gaan.
+Ø Voorzie een methode getVervoerscapaciteit() die als resultaat het aantal
+passagiers geeft dat op een uur tijd de afstand van dal- tot bergstation (of
+andersom) kan overbruggen.
+Formule: vervoerscapaciteit = (60 * T * C) / D
+D = duration = ritduur uitgedrukt in minuten
+C = capaciteit van een gondel (aantal passagiers per gondel)
+T = aantal gondels
+Ø Voorzie de toString() methode die de naam van de gondelbaan en het
+hoogteverschil teruggeeft. Bijvoorbeeld: 3 Vallées Express [1472m]
+Maak nu het hoofdprogramma in de klasse WintersportApp.
+(1) Voeg de volgende gondelbanen toe in een ArrayList.
+Naam Land Snelheid Hoogte
+bergstation
+Hoogte
+dalstation
+3 Vallées Express Frankrijk 6 2360m 888m
+Markbachjochbahn Oostenrijk 8 1435m 835m
+Hahnenkammbahn Oostenrijk 5 2000m 800m
+AiGUille dU MIDi Frankrijk 4 3777m 1038 m
+(2) Doorloop de ArrayList en druk de naam en het hoogteverschil af van alle
+gondelbanen in Frankrijk. Maak gebruik van de methode toString().
+(3) Tel eveneens hoeveel gondelbanen in Oostenrijk gelegen zijn.
+(4) Welke gondelbaan is het snelste? Druk de naam van de gondelbaan af.
+(5) Welke gondelbaan overbrugt het grootste hoogteverschil? Druk de naam en
+het hoogteverschil af.
+Je code moet blijven werken we gegevens mbt de gondelbanen aanpassen en
+ook als er meer of minder gondelbanen in de ArrayList staan.
+Meer informatie over ArrayLists vind je op: https://www.callicoder.com/javaarraylist/.
+Veel succes!
