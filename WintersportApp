@@ -1,8 +1,48 @@
-package be.pxl.je.wintersport;
-
+package be.pxl.je.wintersportReworked;
 import java.util.ArrayList;
-
 public class WintersportApp {
-    ArrayList<Gondelbaan> gondelbanen = new ArrayList<Gondelbaan>();
+    public static void main(String[] args) {
+        ArrayList<Gondelbaan> gondelbanen = new ArrayList<Gondelbaan>();
+        gondelbanen.add(new Gondelbaan("3 Vallées Express", "Frankrijk"));
+        gondelbanen.add(new Gondelbaan("Markbachjochbahn", "Oostenrijk"));
+        gondelbanen.add(new Gondelbaan("Hahnenkammbahn","Oostenrijk"));
+        gondelbanen.add(new Gondelbaan("AiGUille dU MIDi", "Frankrijk"));
+        gondelbanen.get(0).setHoogte(888, 2360);
+        gondelbanen.get(0).setSnelheid(6.0);
+        gondelbanen.get(1).setHoogte(835, 1435);
+        gondelbanen.get(1).setSnelheid(8.0);
+        gondelbanen.get(2).setHoogte(800, 2000);
+        gondelbanen.get(2).setSnelheid(5.0);
+        gondelbanen.get(3).setHoogte(1038, 3777);
+        gondelbanen.get(3).setSnelheid(4.0);
+        //int count = 0;
+        //double snelste = 0;
+        //int hoogste = 0;
+        System.out.println(gondelbanen.get(0).getHoogteverschil());
+        for (Gondelbaan gondelbaan:gondelbanen) {
+            if (gondelbaan.getLand().equals("Frankrijk")){
+                System.out.println(gondelbaan.naamToString());
+            }
+        }
+        long countgondelbanenOostenrijk = (gondelbanen.stream().filter(gondelbaan -> gondelbaan.getLand().equals("Oostenrijk")).count());
+        System.out.println("Er zijn " + countgondelbanenOostenrijk + " gondelbanen in Oostenrijk.");
+
+        /*
+        for (Gondelbaan gondelbaan:gondelbanen) {
+            if (gondelbaan.getLand().equals("Oostenrijk")) {
+                count++;
+            }
+            if (gondelbaan.getDuur() > snelste) {
+                snelste = gondelbanen.indexOf(gondelbanen);
+            }
+            if (gondelbaan.getHoogteverschil() > hoogste) {
+                hoogste = gondelbanen.indexOf(gondelbanen);
+            }
+
+        }
+        System.out.println("Er zijn " + count + " gondelbanen in Oostenrijk.");
+        */
+
+    }
 
 }
